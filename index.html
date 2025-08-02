@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,15 +35,13 @@
       font-size: 1.8rem;
       color: blueviolet;
     }
-   nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0;
-}
-
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0;
     }
     nav ul li a {
       text-decoration: none;
@@ -59,16 +56,13 @@
       padding: 4rem 2rem;
       text-align: center;
     }
-  #home {
-  background: url('./Background2.jpg') no-repeat center top;
-  background-size: contain;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-color: #fffaf6;
-  padding: 6rem 2rem;
+   
+    #home {
+    background: url('./Background2.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 6rem 2rem;
 }
 
-}
 
     #home h2 {
       font-size: 2.5rem;
@@ -108,13 +102,13 @@
     .product:hover {
       transform: translateY(-5px);
     }
-    .product img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
+   .product img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
 }
+
 
     .product h3 {
       margin-top: 0.5rem;
@@ -163,48 +157,81 @@
       color: #5a3e36;
       font-weight: bold;
     }
+
+    /* Toggle Menu Button */
+    #menu-toggle {
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: #5a3e36;
+      padding: 1rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Floating Mobile Cart Icon */
+    #mobile-cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #b28959;
+      color: white;
+      padding: 0.7rem 1rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 1.2rem;
+      z-index: 1000;
+      display: none;
+    }
+
     @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  section {
-    padding: 2rem 1rem;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-
-  #home h2 {
-    font-size: 2rem;
-  }
-
-  #home p {
-    font-size: 1rem;
-  }
-
-  #home button {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-  }
-
-  form input, form textarea {
-    width: 100%;
-  }
-}
-
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #f4e8dc;
+        margin-top: 1rem;
+        border-radius: 5px;
+        padding: 1rem 0;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      #menu-toggle {
+        display: block;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      #home h2 {
+        font-size: 2rem;
+      }
+      #home p {
+        font-size: 1rem;
+      }
+      #home button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+      form input, form textarea {
+        width: 100%;
+      }
+      #mobile-cart-btn {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Allabakash Jewelery</h1>
+    <h1>Allabakash Jewelry</h1>
+    <button id="menu-toggle">☰ Menu</button>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -230,12 +257,12 @@
 
   <section id="about">
     <h2>About Us</h2>
-    <p><strong>At  Allabakash Jewelry</strong> we craft exquisite jewelry pieces tailored to your selected designs, ensuring each creation reflects your unique style and vision.</p>
+    <p><strong>At Allabakash Jewelry</strong>, we craft exquisite jewelry pieces tailored to your selected designs, ensuring each creation reflects your unique style and vision.</p>
     <br>
-     <p> We create jewelry designed especially for traditional Muslim weddings.</p>
-     <br>
-     <hr>
-     <p><strong>9704002363</strong> This is my personal number contact me</p>
+    <p>We create jewelry designed especially for traditional Muslim weddings.</p>
+    <br>
+    <hr>
+    <p><strong>9704002363</strong> This is my personal number, contact me</p>
   </section>
 
   <section id="contact">
@@ -248,6 +275,10 @@
     </form>
   </section>
 
+  <div id="mobile-cart-btn" onclick="alert('Cart contains ' + cart.length + ' items')">
+    🛒 <span id="mobile-cart-count">0</span>
+  </div>
+
   <footer>
     <p>&copy; 2025 Allabakash Jewelry. All rights reserved.</p>
   </footer>
@@ -258,18 +289,20 @@
       { id: 2, name: 'Gold Earrings', price: "price is based on weight", image: './1603.1.webp' },
       { id: 3, name: 'Gold Bracelet', price: "price is based on weight", image: './Gold_bracelet.webp' },
       { id: 4, name: 'Pearl Ring', price: "price is based on weight", image: './pearl_image.jpg' },
-    { id: 5, name: 'Phool Haar', price: "price is based on weight", image: './Phool haar.jpg' },
-   { id: 6, name: 'Chain Necklace', price: "price is based on weight", image: './chain_niklace.jpg' },
-   { id: 7, name: 'Golden Locket', price: "Gold hearted locket Based on Weight", image: './Locket.jpg' },
-    { id: 8, name: 'Chain_anklet', price: "Chain Anklet Based on Weigh", image: './ChainAnklets2.jpg' },
+      { id: 5, name: 'Phool Haar', price: "price is based on weight", image: './Phool haar.jpg' },
+      { id: 6, name: 'Chain Necklace', price: "price is based on weight", image: './chain_niklace.jpg' },
+      { id: 7, name: 'Golden Locket', price: "Gold hearted locket Based on Weight", image: './Locket.jpg' },
+      { id: 8, name: 'Chain_anklet', price: "Chain Anklet Based on Weight", image: './ChainAnklets2.jpg' },
     ];
 
     const cart = [];
     const productList = document.getElementById('product-list');
     const cartCount = document.getElementById('cart-count');
+    const mobileCartCount = document.getElementById('mobile-cart-count');
 
     function updateCart() {
       cartCount.textContent = cart.length;
+      mobileCartCount.textContent = cart.length;
     }
 
     function addToCart(productId) {
@@ -288,7 +321,7 @@
         div.innerHTML = `
           <img src="${product.image}" alt="${product.name}" />
           <h3>${product.name}</h3>
-          <p>Price: $${product.price}</p>
+          <p>Price: ${product.price}</p>
           <button onclick="addToCart(${product.id})">Add to Cart</button>
         `;
         productList.appendChild(div);
@@ -305,12 +338,11 @@
       this.reset();
     });
 
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('show');
+    });
+
     renderProducts();
   </script>
 </body>
 </html>
-
-
-
-
-
