@@ -57,11 +57,27 @@
       text-align: center;
     }
    
-    #home {
-    background: url('./Background2.jpg') no-repeat center center;
-    background-size: cover;
-    padding: 6rem 2rem;
+  .home-overlay {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  animation: fadeInUp 1s ease-out;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 
     #home h2 {
@@ -158,7 +174,7 @@
       font-weight: bold;
     }
 
-    /* Toggle Menu Button */
+  
     #menu-toggle {
       font-size: 1.5rem;
       background: none;
@@ -169,7 +185,7 @@
       display: none;
     }
 
-    /* Floating Mobile Cart Icon */
+   
     #mobile-cart-btn {
       position: fixed;
       bottom: 20px;
@@ -244,11 +260,14 @@
   </header>
 
   <section id="home">
+  <div class="home-overlay">
     <h2>Welcome to Allabakash Jewelry</h2>
     <p>Discover the finest handcrafted jewelry that makes you shine every day.</p>
     <p>If you want to make jewelry, contact: <strong>9704002363</strong></p>
     <button onclick="scrollToProducts()">Shop Now</button>
-  </section>
+  </div>
+</section>
+
 
   <section id="products">
     <h2>Our Jewelry Collection</h2>
